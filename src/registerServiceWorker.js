@@ -27,6 +27,14 @@ export default function register() {
       return;
     }
 
+    window.addEventListener("offline", function(e) {
+      console.log("offline!");
+    });
+
+    window.addEventListener("online", function(e) {
+      console.log("online!");
+    });
+
     window.addEventListener("load", () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
