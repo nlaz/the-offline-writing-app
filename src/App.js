@@ -120,7 +120,7 @@ class App extends Component {
               )}
             </Fragment>
           ) : (
-            "Turn on your network connection when finished."
+            "Turn back on your network connection when finished."
           )}
         </span>
       </div>
