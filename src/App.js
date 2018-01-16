@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 
 class App extends Component {
-  state = { online: false, value: localStorage.getItem("value") || "" };
-
-  componentWillMount() {
-    this.tryRequest();
-  }
+  state = { online: window.navigator.onLine, value: localStorage.getItem("value") || "" };
 
   onChange = e => {
     const { value } = e.target;
@@ -17,27 +13,6 @@ class App extends Component {
   onReset = () => {
     this.setState({ value: "" });
     localStorage.setItem("value", "");
-  };
-
-  tryRequest = () => {
-    const request = new window.XMLHttpRequest();
-    request.open("HEAD", "https://media.giphy.com/media/l0CLT093l7GTtNucU/giphy.gif", true);
-    request.timeout = 5750;
-
-    request.addEventListener("load", event => {
-      console.log("We seem to be online!", event);
-      this.setState({ online: true });
-    });
-
-    var offlineAlert = event => {
-      console.log("We are likely offline:", event);
-      this.setState({ online: false });
-    };
-
-    request.addEventListener("error", offlineAlert);
-    request.addEventListener("timeout", offlineAlert);
-
-    request.send(null);
   };
 
   render() {
