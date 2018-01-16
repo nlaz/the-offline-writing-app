@@ -1,5 +1,19 @@
 body {
+  box-sizing: border-box;
+  color: #272727;
+  font-family: "Noto Serif", serif;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+}
+
+.text-green {
+  color: #50e3c2;
+}
+
+.text-secondary {
+  color: #4a4a4a;
+}
+
+.text-hint {
+  color: #9b9b9b;
 }
