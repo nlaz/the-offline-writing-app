@@ -2,32 +2,56 @@ import React, { Component } from "react";
 import clipboardCopy from "clipboard-copy";
 import wordsCount from "words-count";
 import pluralize from "pluralize";
+import { Link } from "react-router-dom";
+
+import { Offline, Online } from "react-detect-offline";
 
 import "./Home.css";
 
-const ResultScreen = ({ numWords, onCopy, onReset }) => (
-  <div>
-    <h1 className="dark-gray fw2 mb2 center" style={{ maxWidth: "450px" }}>
-      You wrote{" "}
-      <span className="green">{pluralize("word", numWords, true)}</span> without
-      distractions.
-    </h1>
-    <div className="button-group flex">
-      <button
-        onClick={onCopy}
-        className="bg-dark-gray ba bw1 b--dark-gray hover-bg-near-black hover-b--dark-green white fw6 br-pill pv2 ph4 mr3 pointer"
-      >
-        Copy to Clipboard
-      </button>
-      <button
-        onClick={onReset}
-        className="ba bw1 b--dark-gray dark-gray hover-bg-near-black hover-white fw6 br-pill pv3 ph4 pointer"
-      >
-        Start Over
-      </button>
-    </div>
-  </div>
-);
+class ResultScreen extends Component {
+  state = { button1: "Copy to Clipboard" };
+  onCopyPress = () => {
+    this.setState({ button1: "Copied!" });
+    this.props.onCopy();
+    this.timer = setTimeout(
+      () => this.setState({ button1: "Copy to Clipboard" }),
+      500
+    );
+  };
+
+  componentWillUnmount = () => {
+    clearTimeout(this.timer);
+  };
+
+  render() {
+    const { numWords, onReset } = this.props;
+    return (
+      <div>
+        <h1 className="dark-gray fw2 mb2 center" style={{ maxWidth: "450px" }}>
+          You wrote{" "}
+          <span className="green">{pluralize("word", numWords, true)}</span>{" "}
+          without distractions.
+        </h1>
+        <div className="button-group flex">
+          <button
+            onClick={this.onCopyPress}
+            className="bg-dark-gray ba bw1 f6 b--dark-gray hover-bg-near-black hover-b--dark-green white fw6 br-pill pv2 ph4 mr3 pointer"
+            style={{ width: "225px" }}
+          >
+            {this.state.button1}
+          </button>
+          <button
+            onClick={onReset}
+            className="ba bw1 b--dark-gray f6 dark-gray hover-bg-near-black hover-white fw6 br-pill pv3 ph4 pointer"
+            style={{ width: "225px" }}
+          >
+            Start over
+          </button>
+        </div>
+      </div>
+    );
+  }
+}
 
 const TitleScreen = () => (
   <div>
@@ -51,25 +75,21 @@ const TypingScreen = ({ value, onChange }) => (
   </div>
 );
 
-const Footer = ({ isOnline, isFinished }) => (
-  <div className="App-footer">
-    <span className="mid-gray">
-      {!isOnline &&
-        "Turn your network connection back on when you're finished."}
-      {isOnline && (
-        <div>
-          {isFinished
-            ? "Turn off your network connection resume writing."
-            : "Turn off your network connection to get started."}
-        </div>
-      )}
-    </span>
+const Footer = ({ isFinished }) => (
+  <div className="mid-gray">
+    <Offline>
+      Turn your network connection back on when you're finished.
+    </Offline>
+    <Online>
+      {isFinished
+        ? "To resume writing turn off your network connection."
+        : "Turn off your network connection to get started."}
+    </Online>
   </div>
 );
 
 class Home extends Component {
   state = {
-    online: window.navigator.onLine,
     value: localStorage.getItem("value") || ""
   };
 
@@ -80,8 +100,12 @@ class Home extends Component {
   };
 
   onReset = () => {
-    this.setState({ value: "" });
-    localStorage.setItem("value", "");
+    if (
+      window.confirm("Are you sure you want to clear your work and start over?")
+    ) {
+      this.setState({ value: "" });
+      localStorage.setItem("value", "");
+    }
   };
 
   onCopy = () => {
@@ -90,25 +114,42 @@ class Home extends Component {
   };
 
   render() {
-    const { online, value } = this.state;
+    const { value } = this.state;
     const numWords = wordsCount(value);
-    const isFinished = !!value;
-    const isOnline = !!online;
+    const isFinished = Boolean(value);
 
     return (
-      <div className="app dark-gray courier pv5">
-        <div className="content mv4">
-          {!isOnline && <TypingScreen value={value} onChange={this.onChange} />}
-          {isOnline && !isFinished && <TitleScreen />}
-          {isOnline && isFinished && (
-            <ResultScreen
-              numWords={numWords}
-              onCopy={this.onCopy}
-              onReset={this.onReset}
-            />
-          )}
+      <div className="app dark-gray courier pv5 relative">
+        <div className="content mv4" style={{ maxWidth: "600px" }}>
+          <Offline>
+            <TypingScreen value={value} onChange={this.onChange} />
+          </Offline>
+          <Online>
+            {!isFinished && <TitleScreen />}
+            {isFinished && (
+              <ResultScreen
+                numWords={numWords}
+                onCopy={this.onCopy}
+                onReset={this.onReset}
+              />
+            )}
+          </Online>
         </div>
-        <Footer isOnline={isOnline} isFinished={isFinished} />
+        <div className="absolute ml4 mt4" style={{ left: 0, top: 0 }}>
+          <Link
+            className="link moon-gray hover-mid-gray f5 fw1 flex items-center"
+            to="about"
+          >
+            <div
+              className="ba bw1 br-100 f4 flex items-center justify-center mr2"
+              style={{ width: "24px", height: "24px", lineHeight: "24px" }}
+            >
+              ?
+            </div>
+            About
+          </Link>
+        </div>
+        <Footer isFinished={isFinished} />
       </div>
     );
   }

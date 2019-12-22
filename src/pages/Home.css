@@ -8,7 +8,6 @@
 
 .content {
   flex-grow: 1;
-  max-width: 650px;
   padding: 2em;
   position: relative;
   width: 100%;
@@ -25,6 +24,7 @@
   right: 0;
 }
 
+.link:hover,
 button:hover {
   transition: all 0.1s ease-in;
 }
@@ -42,12 +42,4 @@ button:hover {
 
 .textarea::-webkit-input-placeholder {
   color: #555555;
-}
-
-/* Footer */
-.footer {
-  font-size: 0.9em;
-  padding: 2em;
-  padding-top: 1em;
-  width: 100%;
 }
