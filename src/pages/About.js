@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const About = () => (
-  <div className="app dark-gray courier pv5 relative">
+  <div className="app dark-gray courier pv5 ph4 relative">
     <div className="tl mw6 mv5">
       <h3 className="f3 fw1 ma0">The Offline Writing App</h3>
       <hr />

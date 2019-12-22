@@ -8,7 +8,6 @@
 
 .content {
   flex-grow: 1;
-  padding: 2em;
   position: relative;
   width: 100%;
 }
@@ -24,6 +23,10 @@
   right: 0;
 }
 
+button {
+  background: #fcfcff;
+}
+
 .link:hover,
 button:hover {
   transition: all 0.1s ease-in;
@@ -32,7 +35,7 @@ button:hover {
 /* Textarea */
 .textarea > textarea {
   background: #fcfcff;
-  height: 100%;
+  height: 700px;
   width: 100%;
 
   border: none;
@@ -40,6 +43,8 @@ button:hover {
   resize: none;
 }
 
-.textarea::-webkit-input-placeholder {
-  color: #555555;
+@media (max-width: 900px) {
+  .textarea > textarea {
+    height: 450px;
+  }
 }

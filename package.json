@@ -2,7 +2,7 @@
   "name": "offline-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://niko.pizza/offline-app",
+  "homepage": "http://nlaz.github.io/offline-app",
   "dependencies": {
     "clipboard-copy": "^3.1.0",
     "gh-pages": "^1.1.0",
