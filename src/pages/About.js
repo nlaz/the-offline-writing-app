@@ -7,16 +7,16 @@ const About = () => (
       <h3 className="f3 fw1 ma0">The Offline Writing App</h3>
       <hr />
       <p className="lh-copy">
-        The internet is full of distrations. Serious writers shouldn't be
+        The internet is full of distractions. Serious writers shouldn't be
         distracted by the endless buffet of cat memes.{" "}
         <strong>The Offline Writing App</strong> is the only writing app that
-        makes you disconnect so you can get some focus.
+        makes you disconnect so you can get some focused writing.
       </p>
       <p className="b">How to Use It</p>
       <p className="lh-copy">
         To use it, simply disconnect from the internet. Turn your Wi-Fi off,
-        turn on your airplane mode, disconnect your internet tubes, etc. When
-        you are done, turn your Wi-Fi back on and copy-and-paste your content to
+        turn on your airplane mode on, disconnect your internet tubes, etc. When
+        you are done, turn your Wi-Fi back on and copy-and-paste your writing to
         your heart's delight.
       </p>
       <p className="b">Credits</p>
