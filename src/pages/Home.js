@@ -36,7 +36,7 @@ class ResultScreen extends Component {
         <div className="button-group flex flex-row-ns flex-column ph4 items-center">
           <button
             onClick={this.onCopyPress}
-            className="bg-dark-gray ba bw1 f6 b--dark-gray hover-bg-near-black white fw6 br-pill pv3 ph4 mr3-ns mb3 pointer"
+            className="bg-dark-gray ba bw1 f6 b--dark-gray hover-bg-near-black white fw6 br-pill pv3 ph4 mr3-ns mb3 mb0-ns pointer"
             style={{ width: "225px" }}
           >
             {this.state.button1}
