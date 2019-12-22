@@ -1,0 +1,53 @@
+.app {
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+  max-width: 650px;
+  padding: 2em;
+  position: relative;
+  width: 100%;
+}
+
+/* Button group */
+.button-group {
+  bottom: 12px;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  margin-top: auto;
+  position: absolute;
+  right: 0;
+}
+
+button:hover {
+  transition: all 0.1s ease-in;
+}
+
+/* Textarea */
+.textarea > textarea {
+  background: #fcfcff;
+  height: 100%;
+  width: 100%;
+
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.textarea::-webkit-input-placeholder {
+  color: #555555;
+}
+
+/* Footer */
+.footer {
+  font-size: 0.9em;
+  padding: 2em;
+  padding-top: 1em;
+  width: 100%;
+}

@@ -2,19 +2,26 @@
   "name": "offline-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://nlaz.xyz/offline-app",
+  "homepage": "http://niko.pizza/offline-app",
   "dependencies": {
+    "clipboard-copy": "^3.1.0",
     "gh-pages": "^1.1.0",
+    "pluralize": "^8.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.0"
+    "react-ga": "^2.7.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "1.1.0",
+    "tachyons": "^4.11.1",
+    "words-count": "^1.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-	"predeploy": "yarn build",
-	"deploy": "gh-pages -d build"
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   }
 }
