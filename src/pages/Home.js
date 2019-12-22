@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import clipboardCopy from "clipboard-copy";
-import wordsCount from "words-count";
 import pluralize from "pluralize";
 import { Link } from "react-router-dom";
 
@@ -115,7 +114,7 @@ class Home extends Component {
 
   render() {
     const { value } = this.state;
-    const numWords = wordsCount(value);
+    const numWords = value.trim().split(/\s+/).length;
     const isFinished = Boolean(value);
 
     return (
