@@ -5,7 +5,3 @@ The internet is full of distractions. Serious writers shouldn't be distracted by
 ### How to Use It
 
 To use it, simply disconnect from the internet. Turn your Wi-Fi off, turn on your airplane mode on, disconnect your internet tubes, etc. When you are done, turn your Wi-Fi back on and copy-and-paste your writing to your heart's delight.
-
-### Credits
-
-This lovely app was made by <a href="https://twitter.com/nikolazaris">Niko Lazaris</a>. If you enjoy the app, I would love to hear it. Feel free to reach out.
